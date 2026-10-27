@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusConnect AI — Smart College Event Management System</title>
+  <meta name="description" content="Next-generation multi-college event management platform connecting Kerala colleges. Discover, register, organize, and track college events, hackathons, sports, and cultural festivals.">
+  <meta name="keywords" content="Kerala College Events, KMCT, MES, Farook College, Hackathons, Youth Arts Fest, Inter-College Sports, Event Registration, CampusConnect AI">
+  <meta name="theme-color" content="#070913">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Outfit, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Outfit:wght@400;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Application Stylesheets -->
+  <link rel="stylesheet" href="css/theme.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/views.css">
+</head>
+<body>
+  <!-- Ambient Atmospheric Glowing Orbs -->
+  <div class="ambient-glow ambient-glow-1"></div>
+  <div class="ambient-glow ambient-glow-2"></div>
+
+  <!-- Interactive AI Neural Particle Canvas Background -->
+  <canvas id="ai-particle-canvas"></canvas>
+
+  <div id="app-root">
+    <!-- Top Interactive Role Switcher Bar (Demo & Testing Aid) -->
+    <header class="role-switcher-bar">
+      <div class="role-switcher-left">
+        <span class="role-switcher-pill"><i class="fa-solid fa-wand-magic-sparkles"></i> LIVE DEMO SWITCHER</span>
+        <span>Switch active persona to preview distinct portals:</span>
+      </div>
+      <div class="role-buttons">
+        <button class="btn-role-tab active" data-role="student" id="role-btn-student">
+          <i class="fa-solid fa-graduation-cap"></i> Student (Ananya Nair)
+        </button>
+        <button class="btn-role-tab" data-role="coordinator" id="role-btn-coordinator">
+          <i class="fa-solid fa-chalkboard-user"></i> Coordinator (Prof. Rajesh Varma)
+        </button>
+        <button class="btn-role-tab" data-role="admin" id="role-btn-admin">
+          <i class="fa-solid fa-shield-halved"></i> State Admin (Dr. Radhakrishnan)
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Navigation Bar -->
+    <nav class="navbar" id="navbar">
+      <a href="#landing" class="nav-brand">
+        <div class="brand-logo-icon">
+          <i class="fa-solid fa-atom"></i>
+        </div>
+        <div class="brand-text">
+          <h1>CampusConnect AI</h1>
+          <div class="brand-subtitle">Smart Event Ecosystem • Kerala</div>
+        </div>
+      </a>
+
+      <!-- Dynamic Role-Aware Navigation Links -->
+      <ul class="nav-links" id="dynamic-nav-links">
+        <li><a href="#events" class="nav-link"><i class="fa-solid fa-compass"></i> Explore Events</a></li>
+        <li><a href="#register" class="nav-link"><i class="fa-solid fa-user-plus"></i> Student Registration</a></li>
+        <li><a href="#dashboard-student" class="nav-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+        <li><a href="#my-registrations" class="nav-link"><i class="fa-solid fa-ticket"></i> My Passes</a></li>
+        <li><a href="#contact" class="nav-link"><i class="fa-solid fa-headset"></i> Help</a></li>
+      </ul>
+
+      <!-- Action Items: Theme, Notifications, Profile, Mobile Menu -->
+      <div class="nav-actions">
+        <!-- Prominent Student Registration Button -->
+        <a href="#register" class="btn btn-outline-glow btn-sm" id="nav-student-reg-btn">
+          <i class="fa-solid fa-user-plus"></i> Student Registration
+        </a>
+
+        <!-- Theme Toggle -->
+        <button class="theme-toggle-btn" id="theme-toggle-btn" title="Toggle Light / Dark Mode">
+          <i class="fa-solid fa-moon"></i>
+        </button>
+
+        <!-- Notification Bell Dropdown -->
+        <div class="notif-wrapper">
+          <button class="notif-bell-btn" id="notif-bell-btn" title="Notifications & Deadlines">
+            <i class="fa-solid fa-bell"></i>
+            <span class="notif-badge-count" id="notif-count-badge">2</span>
+          </button>
+          
+          <div class="notif-dropdown" id="notif-dropdown">
+            <div class="notif-dropdown-header">
+              <span class="notif-dropdown-title">Notifications & Reminders</span>
+              <button class="notif-mark-all-read" id="notif-mark-all-btn">Mark all read</button>
+            </div>
+            <div class="notif-list-compact" id="notif-list-compact">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="notif-dropdown-footer">
+              <a href="#notifications">View All Alert Center <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- User Profile Pill -->
+        <a href="#profile" class="user-profile-pill" id="nav-user-pill">
+          <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&auto=format&fit=crop&q=80" class="user-avatar-sm" id="nav-user-avatar" alt="User">
+          <div class="user-info-sm">
+            <span class="user-name-sm" id="nav-user-name">Ananya Nair</span>
+            <span class="user-role-badge" id="nav-user-role">STUDENT</span>
+          </div>
+        </a>
+
+        <!-- Mobile Drawer Hamburger -->
+        <button class="mobile-nav-toggle" id="mobile-nav-toggle" aria-label="Toggle Navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Main Dynamic View Container -->
+    <main class="main-view-container" id="main-view-container">
+      <!-- Injected by CampusRouter -->
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>CampusConnect AI</h3>
+          <p>
+            The next-generation centralized event management and collegiate discovery platform connecting higher education institutions across Kerala.
+          </p>
+          <div style="margin-top: 16px; display: flex; gap: 12px; font-size: 1.1rem; color: var(--accent-cyan);">
+            <a href="javascript:void(0)"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="javascript:void(0)"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="javascript:void(0)"><i class="fa-brands fa-instagram"></i></a>
+            <a href="javascript:void(0)"><i class="fa-brands fa-github"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Platform Navigation</h4>
+          <ul class="footer-links">
+            <li><a href="#landing">Home & Overview</a></li>
+            <li><a href="#events">All State Events</a></li>
+            <li><a href="#login">College Portal Login</a></li>
+            <li><a href="#register">Student Registration</a></li>
+            <li><a href="#reports">State Event Analytics</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Kerala Network</h4>
+          <ul class="footer-links">
+            <li><a href="#admin-colleges">KMCT College of Engineering</a></li>
+            <li><a href="#admin-colleges">MES College & MESCE</a></li>
+            <li><a href="#admin-colleges">Farook College Autonomous</a></li>
+            <li><a href="#admin-colleges">Govt Arts & Science College</a></li>
+            <li><a href="#admin-colleges">TKM College of Engineering</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Higher Education Desk</h4>
+          <p style="font-size: 0.85rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
+            Directorate of Collegiate Education, Government of Kerala. Inter-college activity point coordination cell.
+          </p>
+          <div style="font-size: 0.85rem; color: var(--text-muted);">
+            <div><i class="fa-solid fa-envelope" style="color: var(--accent-cyan);"></i> events@campusconnect.gov.in</div>
+            <div style="margin-top: 4px;"><i class="fa-solid fa-phone" style="color: var(--accent-cyan);"></i> +91 (471) 233-8800</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          © 2026 CampusConnect AI. Developed for Kerala Higher Education Collegiate Events.
+        </div>
+        <div style="display: flex; gap: 20px;">
+          <a href="#contact" style="color: var(--text-muted);">Privacy Policy</a>
+          <a href="#contact" style="color: var(--text-muted);">Terms of Service</a>
+          <a href="#contact" style="color: var(--text-muted);">Student Code of Conduct</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Dynamic Modal Root -->
+  <div id="modal-root"></div>
+
+  <!-- Global Toast Alerts Container -->
+  <div id="toast-container"></div>
+
+  <!-- Application Scripts (Ordered) -->
+  <script src="js/data.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/particles.js"></script>
+  <script src="js/router.js"></script>
+  <script src="js/views.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
